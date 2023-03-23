@@ -25,6 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: sudo apt update && sudo apt upgrade -y
+    - run: sudo apt install chromium-browser
     - run: npm ci
-    - run: npm run build --if-present
+    - run: CI=true npm run build --if-present
     - run: npm test
