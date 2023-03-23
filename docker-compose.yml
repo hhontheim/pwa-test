@@ -1,0 +1,18 @@
+---
+version: "3"
+services:
+  pwa-test:
+    image: ghcr.io/hhontheim/pwa-test:latest
+    build: .
+    networks:
+      - link
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pwa.rule=Host(`pwa-app.hontheim.dev`)"
+      - "traefik.http.routers.pwa.entrypoints=websecure"
+      - "traefik.http.routers.pwa.middlewares=chain-no-auth@file"
+      # - "traefik.http.routers.pwa.middlewares=chain-basic-auth@file"
+
+networks:
+  link:
+    external: true
