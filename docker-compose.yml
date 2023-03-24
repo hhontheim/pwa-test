@@ -4,6 +4,7 @@ services:
   pwa-test:
     image: ghcr.io/hhontheim/pwa-test:latest
     build: .
+    restart: unless-stopped
     networks:
       - link
     labels:
