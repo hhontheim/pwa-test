@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private _swPush: SwPush) {}
 
   ngOnInit() {
-    this.requestSubscription();
+    // this.requestSubscription();
   }
 
   requestSubscription = () => {
