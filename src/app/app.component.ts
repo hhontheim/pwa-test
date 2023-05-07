@@ -14,6 +14,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // this.requestSubscription();
+    this._swPush.messages.subscribe(
+      messages => {
+        const badgeCount = (messages as any).notification?.data?.badgeCount;
+        if( badgeCount ) {
+          (navigator as any).setAppBadge( badgeCount );
+        }
+      }
+    )
   }
 
   requestSubscription = () => {
